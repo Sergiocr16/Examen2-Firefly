@@ -1,0 +1,48 @@
+entity Beneficio {
+    nombre String
+    descripcion String
+    localizacion String
+}
+
+entity Entrada {
+    kg Integer
+    fecha ZonedDateTime
+}
+
+entity Tipo {
+    nombre String
+    precioUnitario Float
+}
+
+entity Reserva {
+    fechaEntrega ZonedDateTime
+    recursivo Boolean
+}
+entity ReservaTipo {
+    cantidad Integer
+}
+
+entity Usuario {
+	
+}
+
+relationship OneToMany {
+	Beneficio{beneficio} to Entrada
+}
+
+relationship ManyToOne {
+	Entrada{tipo} to Tipo
+}
+
+relationship OneToMany {
+	Tipo{tipo} to ReservaTipo
+}
+
+relationship OneToMany {
+	Reserva{reserva} to ReservaTipo
+}
+
+relationship OneToMany{
+	Usuario{usuario} to Reserva
+}
+
