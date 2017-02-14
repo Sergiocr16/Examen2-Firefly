@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "tipo",
+            "otherEntityName": "reservaTipo",
+            "otherEntityRelationshipName": "tipo"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "precioUnitario",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20170214225524",
+    "entityTableName": "tipo",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

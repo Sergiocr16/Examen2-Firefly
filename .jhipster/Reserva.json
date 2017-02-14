@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "reserva",
+            "otherEntityName": "reservaTipo",
+            "otherEntityRelationshipName": "reserva"
+        },
+        {
+            "relationshipName": "usuario",
+            "otherEntityName": "usuario",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "fechaEntrega",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "recursivo",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170214225525",
+    "entityTableName": "reserva",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

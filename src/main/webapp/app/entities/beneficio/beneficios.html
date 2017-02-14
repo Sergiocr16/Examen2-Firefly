@@ -1,0 +1,60 @@
+<div>
+    <h2 data-translate="coffeeShopApp.beneficio.home.title">Beneficios</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="beneficio.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="coffeeShopApp.beneficio.home.createLabel">
+                        Create new Beneficio
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="coffeeShopApp.beneficio.nombre">Nombre</span></th>
+                    <th><span data-translate="coffeeShopApp.beneficio.descripcion">Descripcion</span></th>
+                    <th><span data-translate="coffeeShopApp.beneficio.localizacion">Localizacion</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="beneficio in vm.beneficios track by beneficio.id">
+                    <td><a ui-sref="beneficio-detail({id:beneficio.id})">{{beneficio.id}}</a></td>
+                    <td>{{beneficio.nombre}}</td>
+                    <td>{{beneficio.descripcion}}</td>
+                    <td>{{beneficio.localizacion}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="beneficio-detail({id:beneficio.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="beneficio.edit({id:beneficio.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="beneficio.delete({id:beneficio.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

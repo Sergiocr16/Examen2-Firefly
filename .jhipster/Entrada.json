@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "beneficio",
+            "otherEntityName": "beneficio",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "tipo",
+            "otherEntityName": "tipo",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "kg",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fecha",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170214225523",
+    "entityTableName": "entrada",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

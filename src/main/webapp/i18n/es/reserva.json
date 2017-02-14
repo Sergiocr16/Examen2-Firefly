@@ -1,0 +1,25 @@
+{
+    "coffeeShopApp": {
+        "reserva" : {
+            "home": {
+                "title": "Reservas",
+                "createLabel": "Crear nuevo Reserva",
+                "createOrEditLabel": "Crear o editar Reserva",
+                "search": "Search for Reserva"
+            },
+            "created": "Un nuevo Reserva ha sido creado con el identificador {{ param }}",
+            "updated": "Un Reserva ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Reserva ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Reserva {{ id }}?"
+            },
+            "detail": {
+                "title": "Reserva"
+            },
+            "fechaEntrega": "Fecha Entrega",
+            "recursivo": "Recursivo",
+            "reserva": "Reserva",
+            "usuario": "Usuario"
+        }
+    }
+}

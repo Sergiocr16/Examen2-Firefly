@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "beneficio",
+            "otherEntityName": "entrada",
+            "otherEntityRelationshipName": "beneficio"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "localizacion",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170214225522",
+    "entityTableName": "beneficio",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

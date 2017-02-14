@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "tipo",
+            "otherEntityName": "tipo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "reserva",
+            "otherEntityName": "reserva",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "cantidad",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170214225526",
+    "entityTableName": "reserva_tipo",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

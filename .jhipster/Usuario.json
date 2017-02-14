@@ -1,0 +1,17 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "usuario",
+            "otherEntityName": "reserva",
+            "otherEntityRelationshipName": "usuario"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170214225527",
+    "entityTableName": "usuario",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

@@ -1,0 +1,25 @@
+{
+    "coffeeShopApp": {
+        "entrada" : {
+            "home": {
+                "title": "Entradas",
+                "createLabel": "Crear nuevo Entrada",
+                "createOrEditLabel": "Crear o editar Entrada",
+                "search": "Search for Entrada"
+            },
+            "created": "Un nuevo Entrada ha sido creado con el identificador {{ param }}",
+            "updated": "Un Entrada ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Entrada ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Entrada {{ id }}?"
+            },
+            "detail": {
+                "title": "Entrada"
+            },
+            "kg": "Kg",
+            "fecha": "Fecha",
+            "beneficio": "Beneficio",
+            "tipo": "Tipo"
+        }
+    }
+}

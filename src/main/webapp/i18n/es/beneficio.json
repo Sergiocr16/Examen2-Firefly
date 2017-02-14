@@ -1,0 +1,25 @@
+{
+    "coffeeShopApp": {
+        "beneficio" : {
+            "home": {
+                "title": "Beneficios",
+                "createLabel": "Crear nuevo Beneficio",
+                "createOrEditLabel": "Crear o editar Beneficio",
+                "search": "Search for Beneficio"
+            },
+            "created": "Un nuevo Beneficio ha sido creado con el identificador {{ param }}",
+            "updated": "Un Beneficio ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Beneficio ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Beneficio {{ id }}?"
+            },
+            "detail": {
+                "title": "Beneficio"
+            },
+            "nombre": "Nombre",
+            "descripcion": "Descripcion",
+            "localizacion": "Localizacion",
+            "beneficio": "Beneficio"
+        }
+    }
+}

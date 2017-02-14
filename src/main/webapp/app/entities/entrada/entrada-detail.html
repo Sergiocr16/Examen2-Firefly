@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="coffeeShopApp.entrada.detail.title">Entrada</span> {{vm.entrada.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="coffeeShopApp.entrada.kg">Kg</span></dt>
+        <dd>
+            <span>{{vm.entrada.kg}}</span>
+        </dd>
+        <dt><span data-translate="coffeeShopApp.entrada.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{vm.entrada.fecha | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="coffeeShopApp.entrada.beneficio">Beneficio</span></dt>
+        <dd>
+            <a ui-sref="beneficio-detail({id:vm.entrada.beneficio.id})">{{vm.entrada.beneficio.id}}</a>
+        </dd>
+        <dt><span data-translate="coffeeShopApp.entrada.tipo">Tipo</span></dt>
+        <dd>
+            <a ui-sref="tipo-detail({id:vm.entrada.tipo.id})">{{vm.entrada.tipo.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="entrada-detail.edit({id:vm.entrada.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

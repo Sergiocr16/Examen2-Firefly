@@ -5,6 +5,15 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170214225522_added_entity_Beneficio.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170214225523_added_entity_Entrada.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170214225524_added_entity_Tipo.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170214225525_added_entity_Reserva.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170214225526_added_entity_ReservaTipo.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170214225527_added_entity_Usuario.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20170214225523_added_entity_constraints_Entrada.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170214225525_added_entity_constraints_Reserva.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170214225526_added_entity_constraints_ReservaTipo.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
