@@ -1,48 +1,51 @@
 entity Beneficio {
-    nombre String
-    descripcion String
-    localizacion String
+    nombre String required
+    descripcion String required
+    localizacion String required
 }
 
 entity Entrada {
-    kg Integer
-    fecha ZonedDateTime
+    kg Integer required min(0)
+    fecha ZonedDateTime required
 }
 
 entity Tipo {
-    nombre String
-    precioUnitario Float
+    nombre String required
+    precioUnitario Double required min(0)
 }
 
 entity Reserva {
-    fechaEntrega ZonedDateTime
-    recursivo Boolean
+    fechaEntrega ZonedDateTime required
+    recursivo Boolean required
 }
 entity ReservaTipo {
-    cantidad Integer
+    cantidad Integer required min(0)
 }
 
-entity Usuario {
-	
-}
 
-relationship OneToMany {
-	Beneficio{beneficio} to Entrada
-}
 
 relationship ManyToOne {
-	Entrada{tipo} to Tipo
+	Entrada{tipo(nombre)} to Tipo,
+    Entrada{beneficio(nombre)} to Beneficio 
 }
 
-relationship OneToMany {
-	Tipo{tipo} to ReservaTipo
+relationship ManyToOne{
+	ReservaTipo{tipo(nombre)} to Tipo,
+    ReservaTipo{reserva} to Reserva{reservasTipos}
 }
 
-relationship OneToMany {
-	Reserva{reserva} to ReservaTipo
+
+relationship ManyToOne {
+	Reserva{usuario(login)} to User
 }
 
-relationship OneToMany{
-	Usuario{usuario} to Reserva
-}
+
+//paginacion para todas las entidades de angular
+paginate * with pager
+//Agrega dto a todas las entidades
+dto * with mapstruct
+
+// Crea los servicios sin interfaces.
+service all with serviceClass //serviceImpl
+angularSuffix * with ang
 

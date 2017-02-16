@@ -1,0 +1,23 @@
+{
+    "coffeeShopApp": {
+        "tipo" : {
+            "home": {
+                "title": "Tipos",
+                "createLabel": "Crear nuevo Tipo",
+                "createOrEditLabel": "Crear o editar Tipo",
+                "search": "Search for Tipo"
+            },
+            "created": "Un nuevo Tipo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipo ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipo {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo"
+            },
+            "nombre": "Nombre",
+            "precioUnitario": "Precio Unitario"
+        }
+    }
+}

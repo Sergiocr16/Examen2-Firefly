@@ -1,0 +1,24 @@
+{
+    "coffeeShopApp": {
+        "reservaTipo" : {
+            "home": {
+                "title": "Reserva Tipos",
+                "createLabel": "Crear nuevo Reserva Tipo",
+                "createOrEditLabel": "Crear o editar Reserva Tipo",
+                "search": "Search for Reserva Tipo"
+            },
+            "created": "Un nuevo Reserva Tipo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Reserva Tipo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Reserva Tipo ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Reserva Tipo {{ id }}?"
+            },
+            "detail": {
+                "title": "Reserva Tipo"
+            },
+            "cantidad": "Cantidad",
+            "tipo": "Tipo",
+            "reserva": "Reserva"
+        }
+    }
+}
