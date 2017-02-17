@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span data-translate="coffeeShopApp.tipo.detail.title">Tipo</span> {{vm.tipo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="coffeeShopApp.tipo.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{vm.tipo.nombre}}</span>
+        </dd>
+        <dt><span data-translate="coffeeShopApp.tipo.precioUnitario">Precio Unitario</span></dt>
+        <dd>
+            <span>{{vm.tipo.precioUnitario}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="tipoang-detail.edit({id:vm.tipo.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
