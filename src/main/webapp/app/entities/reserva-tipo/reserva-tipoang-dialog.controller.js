@@ -29,6 +29,7 @@
             if (vm.reservaTipo.id !== null) {
                 ReservaTipo.update(vm.reservaTipo, onSaveSuccess, onSaveError);
             } else {
+
                 ReservaTipo.save(vm.reservaTipo, onSaveSuccess, onSaveError);
             }
         }
