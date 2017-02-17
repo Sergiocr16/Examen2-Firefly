@@ -22,7 +22,7 @@
 
         vm.pushReservaTipos = function(){
             vm.reservatipos.push({cantidad:1, id:null, tipoId:null})
-                    console.log(vm.reservatipos);
+
         }
         vm.pushReservaTipos();
         vm.removeReservaTipo = function(index){

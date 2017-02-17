@@ -1,0 +1,42 @@
+<div>
+    <h2 data-translate="coffeeShopApp.reserva.home.title3">Reservas</h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+
+                <th jh-sort-by="fechaEntrega"><span data-translate="coffeeShopApp.reserva.fechaEntrega">Fecha Entrega</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="recursivo"><span data-translate="coffeeShopApp.reserva.recursivo">Recursivo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="usuarioLogin"><span data-translate="coffeeShopApp.reserva.usuario">Usuario</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="reserva in vm.reservas track by reserva.id">
+                <td>{{reserva.fechaEntrega | date:'medium'}}</td>
+                <td>{{reserva.recursivo}}</td>
+                <td>
+                    {{reserva.usuarioLogin}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="reservaang-detail({id:reserva.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                        </button>
+
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

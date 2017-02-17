@@ -10,8 +10,10 @@
                 "beneficioang": "Beneficio",
                 "entradaang": "Entrada",
                 "tipoang": "Tipo",
-                "reservaang": "Reserva",
+                "reservaang": "Solicitudes",
                 "reservaTipoang": "Reserva Tipo",
+                "misReservasang": "Mis reservas",
+                "misentregasang": "Mis entregas",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

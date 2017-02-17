@@ -96,7 +96,7 @@ public class UserDTO {
     @Override
     public String toString() {
         return "UserDTO{" +
-
+            "id='" + id + '\'' +
             "login='" + login + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +

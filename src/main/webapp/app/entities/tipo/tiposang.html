@@ -18,7 +18,6 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="nombre"><span data-translate="coffeeShopApp.tipo.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="precioUnitario"><span data-translate="coffeeShopApp.tipo.precioUnitario">Precio Unitario</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -26,7 +25,6 @@
             </thead>
             <tbody>
                 <tr ng-repeat="tipo in vm.tipos track by tipo.id">
-                    <td><a ui-sref="tipoang-detail({id:tipo.id})">{{tipo.id}}</a></td>
                     <td>{{tipo.nombre}}</td>
                     <td>{{tipo.precioUnitario}}</td>
                     <td class="text-right">

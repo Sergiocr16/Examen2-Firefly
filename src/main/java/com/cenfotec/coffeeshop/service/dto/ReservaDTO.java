@@ -21,9 +21,11 @@ public class ReservaDTO implements Serializable {
     @NotNull
     private Boolean recursivo;
 
+    @NotNull
+    private Boolean procesado;
 
     private Long usuarioId;
-    
+
 
     private String usuarioLogin;
 
@@ -41,12 +43,21 @@ public class ReservaDTO implements Serializable {
     public void setFechaEntrega(ZonedDateTime fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
+
     public Boolean getRecursivo() {
         return recursivo;
     }
 
     public void setRecursivo(Boolean recursivo) {
         this.recursivo = recursivo;
+    }
+
+    public Boolean getProcesado() {
+        return recursivo;
+    }
+
+    public void setProcesado(Boolean procesado) {
+        this.procesado = procesado;
     }
 
     public Long getUsuarioId() {

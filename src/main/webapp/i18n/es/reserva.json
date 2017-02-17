@@ -2,7 +2,10 @@
     "coffeeShopApp": {
         "reserva" : {
             "home": {
-                "title": "Reservas",
+                "title": "Solicitudes",
+                "title2": "Mis reservas",
+                "title3": "Mis entregas",
+                "title4": "Entregas de mañana",
                 "createLabel": "Crear nuevo Reserva",
                 "createOrEditLabel": "Crear o editar Reserva",
                 "search": "Search for Reserva"
@@ -14,7 +17,7 @@
                 "question": "¿Seguro que quiere eliminar Reserva {{ id }}?"
             },
             "detail": {
-                "title": "Reserva"
+                "title": "Solicitud"
             },
             "fechaEntrega": "Fecha Entrega",
             "recursivo": "Recursivo",

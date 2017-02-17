@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 public class ReservaResource {
 
     private final Logger log = LoggerFactory.getLogger(ReservaResource.class);
-        
+
     @Inject
     private ReservaService reservaService;
 
@@ -78,6 +78,36 @@ public class ReservaResource {
             .headers(HeaderUtil.createEntityUpdateAlert("reserva", reservaDTO.getId().toString()))
             .body(result);
     }
+
+    @GetMapping("/delivers")
+    @Timed
+    public ResponseEntity<List<ReservaDTO>> findDelievers(@ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Reservas");
+        Page<ReservaDTO> page = reservaService.findDelivers(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/delivers");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/requestsForTomorrow")
+    @Timed
+    public ResponseEntity<List<ReservaDTO>> findrequestsForTomorrow(@ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Reservas");
+        Page<ReservaDTO> page = reservaService.findrequestsForTomorrow(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/requestsForTomorrow");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+    @GetMapping("/reservasByCurrentUser")
+    @Timed
+    public ResponseEntity<List<ReservaDTO>> getReservasByUser(@ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Reservas");
+        Page<ReservaDTO> page = reservaService.findByUser(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservasbyuser");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
 
     /**
      * GET  /reservas : get all the reservas.

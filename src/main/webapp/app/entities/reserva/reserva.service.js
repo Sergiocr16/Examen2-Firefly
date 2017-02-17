@@ -21,7 +21,22 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+             'getByUser': {
+                 method:'GET',
+                  url: 'api/reservasByCurrentUser'
+                  , isArray: true
+              },
+               'delivers': {
+                    method:'GET',
+                    url: 'api/delivers',
+                    isArray: true
+                },
+                 'requestForTomorrow': {
+                    method:'GET',
+                    url: 'api/requestsForTomorrow',
+                    isArray: true
+                }
         });
     }
 })();

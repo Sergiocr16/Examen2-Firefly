@@ -3,11 +3,11 @@
 
     angular
         .module('coffeeShopApp')
-        .controller('ReservaAngController', ReservaAngController);
+        .controller('MisReservasAngController', MisReservasAngController);
 
-    ReservaAngController.$inject = ['$scope', '$state', 'Reserva', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    MisReservasAngController.$inject = ['$scope', '$state', 'Reserva', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function ReservaAngController ($scope, $state, Reserva, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function MisReservasAngController ($scope, $state, Reserva, ParseLinks, AlertService, paginationConstants, pagingParams) {
         var vm = this;
 
         vm.loadPage = loadPage;
@@ -19,29 +19,17 @@
         loadAll();
 
         function loadAll () {
-            Reserva.query({
+            Reserva.getByUser({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
             }, onSuccess, onError);
-            Reserva.requestForTomorrow({
-                page: pagingParams.page - 1,
-                size: vm.itemsPerPage,
-                sort: sort()
-             }, onSuccessForTomorrow, onError);
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
                 if (vm.predicate !== 'id') {
                     result.push('id');
                 }
                 return result;
-            }
-            function onSuccessForTomorrow(data, headers) {
-                vm.links = ParseLinks.parse(headers('link'));
-                vm.totalItems = headers('X-Total-Count');
-                vm.queryCount = vm.totalItems;
-                vm.requestsForTomorrow = data;
-                vm.page = pagingParams.page;
             }
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
