@@ -43,14 +43,16 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
     mail:
-        host: localhost
-        port: 25
-        username:
+        host: smtp.gmail.com
+        port: 587
+        username: diegobari06@gmail.com
         password:
-    messages:
-        cache-seconds: 1
-    thymeleaf:
-        cache: false
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
 
 liquibase:
     contexts: dev
@@ -70,6 +72,7 @@ jhipster:
                 # Token is valid 24 hours
                 tokenValidityInSeconds: 86400
     mail: # specific JHipster mail property, for standard properties see MailProperties
+
         from: CoffeeShop@localhost
         baseUrl: http://127.0.0.1:8080
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration

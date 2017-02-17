@@ -1,7 +1,8 @@
 package com.cenfotec.coffeeshop.repository;
 
 import com.cenfotec.coffeeshop.domain.Reserva;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 public interface ReservaRepository extends JpaRepository<Reserva,Long> {
 
     @Query("select reserva from Reserva reserva where reserva.usuario.login = ?#{principal.username}")
-    List<Reserva> findByUsuarioIsCurrentUser();
+    Page<Reserva> findByUsuarioIsCurrentUser(Pageable pageable);
+
 
 }

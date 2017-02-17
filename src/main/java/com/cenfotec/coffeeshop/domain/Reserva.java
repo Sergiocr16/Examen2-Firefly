@@ -31,6 +31,10 @@ public class Reserva implements Serializable {
     @Column(name = "recursivo", nullable = false)
     private Boolean recursivo;
 
+    @NotNull
+    @Column(name = "procesado", nullable = false)
+    private Boolean procesado;
+
     @ManyToOne
     private User usuario;
 
@@ -63,9 +67,22 @@ public class Reserva implements Serializable {
         return recursivo;
     }
 
+    public Boolean isProcesado() {
+        return procesado;
+    }
+
     public Reserva recursivo(Boolean recursivo) {
         this.recursivo = recursivo;
         return this;
+    }
+
+    public Reserva procesado(Boolean procesado) {
+        this.procesado = procesado;
+        return this;
+    }
+
+    public void setProcesado(Boolean procesado) {
+        this.procesado = procesado;
     }
 
     public void setRecursivo(Boolean recursivo) {

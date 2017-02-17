@@ -9,17 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('reservaang', {
+        .state('misReservasang', {
             parent: 'entity',
-            url: '/reservaang?page&sort&search',
+            url: '/misReservaang?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'coffeeShopApp.reserva.home.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/reserva/reservasang.html',
-                    controller: 'ReservaAngController',
+                    templateUrl: 'app/entities/reserva/misreservasang.html',
+                    controller: 'MisReservasAngController',
                     controllerAs: 'vm'
                 }
             },
@@ -51,6 +51,90 @@
                 }]
             }
         })
+        .state('misentregasang', {
+                    parent: 'entity',
+                    url: '/misentregasang?page&sort&search',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pageTitle: 'coffeeShopApp.reserva.home.title'
+                    },
+                    views: {
+                        'content@': {
+                            templateUrl: 'app/entities/reserva/misentregasang.html',
+                            controller: 'MisEntregasController',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    params: {
+                        page: {
+                            value: '1',
+                            squash: true
+                        },
+                        sort: {
+                            value: 'id,asc',
+                            squash: true
+                        },
+                        search: null
+                    },
+                    resolve: {
+                        pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                            return {
+                                page: PaginationUtil.parsePage($stateParams.page),
+                                sort: $stateParams.sort,
+                                predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                                ascending: PaginationUtil.parseAscending($stateParams.sort),
+                                search: $stateParams.search
+                            };
+                        }],
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('reserva');
+                            $translatePartialLoader.addPart('global');
+                            return $translate.refresh();
+                        }]
+                    }
+                })
+                .state('reservaang', {
+                    parent: 'entity',
+                    url: '/reservaang?page&sort&search',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pageTitle: 'coffeeShopApp.reserva.home.title'
+                    },
+                    views: {
+                        'content@': {
+                            templateUrl: 'app/entities/reserva/reservasang.html',
+                            controller: 'ReservaAngController',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    params: {
+                        page: {
+                            value: '1',
+                            squash: true
+                        },
+                        sort: {
+                            value: 'id,asc',
+                            squash: true
+                        },
+                        search: null
+                    },
+                    resolve: {
+                        pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                            return {
+                                page: PaginationUtil.parsePage($stateParams.page),
+                                sort: $stateParams.sort,
+                                predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                                ascending: PaginationUtil.parseAscending($stateParams.sort),
+                                search: $stateParams.search
+                            };
+                        }],
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('reserva');
+                            $translatePartialLoader.addPart('global');
+                            return $translate.refresh();
+                        }]
+                    }
+                })
         .state('reservaang-detail', {
             parent: 'entity',
             url: '/reservaang/{id}',

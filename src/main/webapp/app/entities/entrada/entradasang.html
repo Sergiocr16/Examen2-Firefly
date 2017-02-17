@@ -18,7 +18,6 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="kg"><span data-translate="coffeeShopApp.entrada.kg">Kg</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fecha"><span data-translate="coffeeShopApp.entrada.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="tipoNombre"><span data-translate="coffeeShopApp.entrada.tipo">Tipo</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -28,7 +27,6 @@
             </thead>
             <tbody>
                 <tr ng-repeat="entrada in vm.entradas track by entrada.id">
-                    <td><a ui-sref="entradaang-detail({id:entrada.id})">{{entrada.id}}</a></td>
                     <td>{{entrada.kg}}</td>
                     <td>{{entrada.fecha | date:'medium'}}</td>
                     <td>

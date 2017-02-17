@@ -18,7 +18,7 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+
                     <th jh-sort-by="nombre"><span data-translate="coffeeShopApp.beneficio.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="descripcion"><span data-translate="coffeeShopApp.beneficio.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="localizacion"><span data-translate="coffeeShopApp.beneficio.localizacion">Localizacion</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -27,7 +27,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="beneficio in vm.beneficios track by beneficio.id">
-                    <td><a ui-sref="beneficioang-detail({id:beneficio.id})">{{beneficio.id}}</a></td>
+                   
                     <td>{{beneficio.nombre}}</td>
                     <td>{{beneficio.descripcion}}</td>
                     <td>{{beneficio.localizacion}}</td>
