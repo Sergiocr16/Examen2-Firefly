@@ -41,12 +41,12 @@
         }
 
           vm.getPrecioTotal = function(){
-                    var precioTotal = 0;
-                    var precioPorTipo = vm.reservatipos.map((reservaTipo)=>{return vm.getPrecioTipo(reservaTipo)})
-                     angular.forEach(precioPorTipo, function(value, key) {
-                             precioTotal = precioTotal + value;
-                       });
-                       return precioTotal;
+//                    var precioTotal = 0;
+//                    var precioPorTipo = vm.reservatipos.map((reservaTipo)function(){return vm.getPrecioTipo(reservaTipo);})
+//                     angular.forEach(precioPorTipo, function(value, key) {
+//                             precioTotal = precioTotal + value;
+//                       });
+//                       return precioTotal;
                 }
 
         $timeout(function (){
@@ -65,6 +65,7 @@
              Principal.identity().then(function(account) {
             vm.reserva.usuarioId = account.id;
                                           });
+            vm.reserva.procesado = false;
                 Reserva.save(vm.reserva, onSaveSuccess, onSaveError);
             }
         }

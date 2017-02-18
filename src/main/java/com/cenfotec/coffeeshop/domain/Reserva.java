@@ -67,13 +67,17 @@ public class Reserva implements Serializable {
         return recursivo;
     }
 
-    public Boolean isProcesado() {
-        return procesado;
-    }
-
     public Reserva recursivo(Boolean recursivo) {
         this.recursivo = recursivo;
         return this;
+    }
+
+    public void setRecursivo(Boolean recursivo) {
+        this.recursivo = recursivo;
+    }
+
+    public Boolean isProcesado() {
+        return procesado;
     }
 
     public Reserva procesado(Boolean procesado) {
@@ -83,10 +87,6 @@ public class Reserva implements Serializable {
 
     public void setProcesado(Boolean procesado) {
         this.procesado = procesado;
-    }
-
-    public void setRecursivo(Boolean recursivo) {
-        this.recursivo = recursivo;
     }
 
     public User getUsuario() {
@@ -153,6 +153,7 @@ public class Reserva implements Serializable {
             "id=" + id +
             ", fechaEntrega='" + fechaEntrega + "'" +
             ", recursivo='" + recursivo + "'" +
+            ", procesado='" + procesado + "'" +
             '}';
     }
 }

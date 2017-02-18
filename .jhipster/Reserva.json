@@ -28,12 +28,19 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "procesado",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20170215043055",
-    "entityTableName": "reserva",
     "dto": "mapstruct",
-    "pagination": "pager",
     "service": "serviceClass",
+    "entityTableName": "reserva",
+    "pagination": "pager",
     "angularJSSuffix": "ang"
 }
