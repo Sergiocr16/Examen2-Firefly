@@ -51,6 +51,9 @@ public class ReservaResourceIntTest {
     private static final Boolean DEFAULT_RECURSIVO = false;
     private static final Boolean UPDATED_RECURSIVO = true;
 
+    private static final Boolean DEFAULT_PROCESADO = false;
+    private static final Boolean UPDATED_PROCESADO = true;
+
     @Inject
     private ReservaRepository reservaRepository;
 
@@ -92,7 +95,8 @@ public class ReservaResourceIntTest {
     public static Reserva createEntity(EntityManager em) {
         Reserva reserva = new Reserva()
                 .fechaEntrega(DEFAULT_FECHA_ENTREGA)
-                .recursivo(DEFAULT_RECURSIVO);
+                .recursivo(DEFAULT_RECURSIVO)
+                .procesado(DEFAULT_PROCESADO);
         return reserva;
     }
 
@@ -120,6 +124,7 @@ public class ReservaResourceIntTest {
         Reserva testReserva = reservaList.get(reservaList.size() - 1);
         assertThat(testReserva.getFechaEntrega()).isEqualTo(DEFAULT_FECHA_ENTREGA);
         assertThat(testReserva.isRecursivo()).isEqualTo(DEFAULT_RECURSIVO);
+        assertThat(testReserva.isProcesado()).isEqualTo(DEFAULT_PROCESADO);
     }
 
     @Test
@@ -183,6 +188,25 @@ public class ReservaResourceIntTest {
 
     @Test
     @Transactional
+    public void checkProcesadoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = reservaRepository.findAll().size();
+        // set the field null
+        reserva.setProcesado(null);
+
+        // Create the Reserva, which fails.
+        ReservaDTO reservaDTO = reservaMapper.reservaToReservaDTO(reserva);
+
+        restReservaMockMvc.perform(post("/api/reservas")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(reservaDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Reserva> reservaList = reservaRepository.findAll();
+        assertThat(reservaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllReservas() throws Exception {
         // Initialize the database
         reservaRepository.saveAndFlush(reserva);
@@ -193,7 +217,8 @@ public class ReservaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(reserva.getId().intValue())))
             .andExpect(jsonPath("$.[*].fechaEntrega").value(hasItem(sameInstant(DEFAULT_FECHA_ENTREGA))))
-            .andExpect(jsonPath("$.[*].recursivo").value(hasItem(DEFAULT_RECURSIVO.booleanValue())));
+            .andExpect(jsonPath("$.[*].recursivo").value(hasItem(DEFAULT_RECURSIVO.booleanValue())))
+            .andExpect(jsonPath("$.[*].procesado").value(hasItem(DEFAULT_PROCESADO.booleanValue())));
     }
 
     @Test
@@ -208,7 +233,8 @@ public class ReservaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(reserva.getId().intValue()))
             .andExpect(jsonPath("$.fechaEntrega").value(sameInstant(DEFAULT_FECHA_ENTREGA)))
-            .andExpect(jsonPath("$.recursivo").value(DEFAULT_RECURSIVO.booleanValue()));
+            .andExpect(jsonPath("$.recursivo").value(DEFAULT_RECURSIVO.booleanValue()))
+            .andExpect(jsonPath("$.procesado").value(DEFAULT_PROCESADO.booleanValue()));
     }
 
     @Test
@@ -230,7 +256,8 @@ public class ReservaResourceIntTest {
         Reserva updatedReserva = reservaRepository.findOne(reserva.getId());
         updatedReserva
                 .fechaEntrega(UPDATED_FECHA_ENTREGA)
-                .recursivo(UPDATED_RECURSIVO);
+                .recursivo(UPDATED_RECURSIVO)
+                .procesado(UPDATED_PROCESADO);
         ReservaDTO reservaDTO = reservaMapper.reservaToReservaDTO(updatedReserva);
 
         restReservaMockMvc.perform(put("/api/reservas")
@@ -244,6 +271,7 @@ public class ReservaResourceIntTest {
         Reserva testReserva = reservaList.get(reservaList.size() - 1);
         assertThat(testReserva.getFechaEntrega()).isEqualTo(UPDATED_FECHA_ENTREGA);
         assertThat(testReserva.isRecursivo()).isEqualTo(UPDATED_RECURSIVO);
+        assertThat(testReserva.isProcesado()).isEqualTo(UPDATED_PROCESADO);
     }
 
     @Test

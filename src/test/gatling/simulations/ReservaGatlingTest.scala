@@ -68,7 +68,7 @@ class ReservaGatlingTest extends Simulation {
             .exec(http("Create new reserva")
             .post("/api/reservas")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "fechaEntrega":"2020-01-01T00:00:00.000Z", "recursivo":null}""")).asJSON
+            .body(StringBody("""{"id":null, "fechaEntrega":"2020-01-01T00:00:00.000Z", "recursivo":null, "procesado":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_reserva_url"))).exitHereIfFailed
             .pause(10)

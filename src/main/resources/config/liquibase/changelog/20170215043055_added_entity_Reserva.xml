@@ -32,6 +32,10 @@
                 <constraints nullable="false" />
             </column>
             
+            <column name="procesado" type="bit">
+                <constraints nullable="false" />
+            </column>
+            
             <column name="usuario_id" type="bigint">
                 <constraints nullable="true" />
             </column>
