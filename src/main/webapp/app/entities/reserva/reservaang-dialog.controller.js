@@ -66,6 +66,7 @@
             vm.reserva.usuarioId = account.id;
                                           });
             vm.reserva.procesado = false;
+            console.log(vm.reserva.procesado)
                 Reserva.save(vm.reserva, onSaveSuccess, onSaveError);
             }
         }

@@ -19,16 +19,17 @@
         loadAll();
 
         function loadAll () {
-            Reserva.query({
-                page: pagingParams.page - 1,
-                size: vm.itemsPerPage,
-                sort: sort()
-            }, onSuccess, onError);
+
             Reserva.requestForTomorrow({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
              }, onSuccessForTomorrow, onError);
+             Reserva.requests({
+                             page: pagingParams.page - 1,
+                             size: vm.itemsPerPage,
+                             sort: sort()
+                         }, onSuccess, onError);
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
                 if (vm.predicate !== 'id') {

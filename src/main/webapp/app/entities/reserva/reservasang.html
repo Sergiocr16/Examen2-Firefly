@@ -11,16 +11,14 @@
                 <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="fechaEntrega"><span data-translate="coffeeShopApp.reserva.fechaEntrega">Fecha Entrega</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="recursivo"><span data-translate="coffeeShopApp.reserva.recursivo">Recursivo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="usuarioLogin"><span data-translate="coffeeShopApp.reserva.usuario">Usuario</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="reserva in vm.reservas track by reserva.id">
+                <tr ng-repeat="reserva in vm.reservas track by $index">
 
                     <td>{{reserva.fechaEntrega | date:'medium'}}</td>
-                    <td>{{reserva.recursivo}}</td>
                     <td>
                         {{reserva.usuarioLogin}}
                     </td>
@@ -46,7 +44,7 @@
 
     <div class="col-md-4" style="border: 1px solid gray; border-radius:10px;">
         <h2 data-translate="coffeeShopApp.reserva.home.title4" >Reservas</h2>
-    
+
 
         <br/>
 
