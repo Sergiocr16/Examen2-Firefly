@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/misReservaang?page&sort&search',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_ADMIN'],
                 pageTitle: 'coffeeShopApp.reserva.home.title'
             },
             views: {
@@ -55,7 +55,7 @@
                     parent: 'entity',
                     url: '/misentregasang?page&sort&search',
                     data: {
-                        authorities: ['ROLE_USER'],
+                        authorities: ['ROLE_USER','ROLE_ADMIN'],
                         pageTitle: 'coffeeShopApp.reserva.home.title'
                     },
                     views: {
@@ -97,7 +97,7 @@
                     parent: 'entity',
                     url: '/reservaang?page&sort&search',
                     data: {
-                        authorities: ['ROLE_USER'],
+                        authorities: ['ROLE_USER','ROLE_ADMIN'],
                         pageTitle: 'coffeeShopApp.reserva.home.title'
                     },
                     views: {
@@ -139,7 +139,7 @@
             parent: 'entity',
             url: '/reservaang/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_ADMIN'],
                 pageTitle: 'coffeeShopApp.reserva.detail.title'
             },
             views: {
@@ -171,7 +171,7 @@
             parent: 'reservaang-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_ADMIN'],
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -196,7 +196,7 @@
             parent: 'reservaang',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_ADMIN'],
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -225,7 +225,7 @@
             parent: 'reservaang',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -250,7 +250,7 @@
             parent: 'reservaang',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_ADMIN'],
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
