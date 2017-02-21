@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 public class ReservaTipoResource {
 
     private final Logger log = LoggerFactory.getLogger(ReservaTipoResource.class);
-        
+
     @Inject
     private ReservaTipoService reservaTipoService;
 
@@ -95,7 +95,15 @@ public class ReservaTipoResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reserva-tipos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
+    @GetMapping("/tiposByReserva/{id}")
+    @Timed
+    public ResponseEntity<List<ReservaTipoDTO>> getTiposByReserva(@PathVariable Long id)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of ReservaTipos");
+        Page<ReservaTipoDTO> page = reservaTipoService.getTiposByReserva(id);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tiposByReserva/{id}");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
     /**
      * GET  /reserva-tipos/:id : get the "id" reservaTipo.
      *

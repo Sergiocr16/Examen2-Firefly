@@ -167,6 +167,38 @@
                 }]
             }
         })
+          .state('misreservasang-detail', {
+                    parent: 'entity',
+                    url: '/misreservasang/{id}',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pageTitle: 'coffeeShopApp.reserva.detail.title'
+                    },
+                    views: {
+                        'content@': {
+                            templateUrl: 'app/entities/reserva/misreservasang-detail.html',
+                            controller: 'ReservaAngDetailController',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('reserva');
+                            return $translate.refresh();
+                        }],
+                        entity: ['$stateParams', 'Reserva', function($stateParams, Reserva) {
+                            return Reserva.get({id : $stateParams.id}).$promise;
+                        }],
+                        previousState: ["$state", function ($state) {
+                            var currentStateData = {
+                                name: $state.current.name || 'reservaang',
+                                params: $state.params,
+                                url: $state.href($state.current.name, $state.params)
+                            };
+                            return currentStateData;
+                        }]
+                    }
+                })
         .state('reservaang-detail.edit', {
             parent: 'reservaang-detail',
             url: '/detail/edit',
@@ -193,7 +225,7 @@
             }]
         })
         .state('reservaang.new', {
-            parent: 'reservaang',
+            parent: 'misReservasang',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']

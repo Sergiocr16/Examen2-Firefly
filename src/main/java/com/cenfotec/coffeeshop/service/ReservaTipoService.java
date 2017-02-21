@@ -2,11 +2,13 @@ package com.cenfotec.coffeeshop.service;
 
 import com.cenfotec.coffeeshop.domain.ReservaTipo;
 import com.cenfotec.coffeeshop.repository.ReservaTipoRepository;
+import com.cenfotec.coffeeshop.service.dto.ReservaDTO;
 import com.cenfotec.coffeeshop.service.dto.ReservaTipoDTO;
 import com.cenfotec.coffeeshop.service.mapper.ReservaTipoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ import java.util.stream.Collectors;
 public class ReservaTipoService {
 
     private final Logger log = LoggerFactory.getLogger(ReservaTipoService.class);
-    
+
     @Inject
     private ReservaTipoRepository reservaTipoRepository;
 
@@ -47,11 +49,11 @@ public class ReservaTipoService {
 
     /**
      *  Get all the reservaTipos.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<ReservaTipoDTO> findAll(Pageable pageable) {
         log.debug("Request to get all ReservaTipos");
         Page<ReservaTipo> result = reservaTipoRepository.findAll(pageable);
@@ -64,14 +66,19 @@ public class ReservaTipoService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public ReservaTipoDTO findOne(Long id) {
         log.debug("Request to get ReservaTipo : {}", id);
         ReservaTipo reservaTipo = reservaTipoRepository.findOne(id);
         ReservaTipoDTO reservaTipoDTO = reservaTipoMapper.reservaTipoToReservaTipoDTO(reservaTipo);
         return reservaTipoDTO;
     }
-
+    @Transactional(readOnly = true)
+    public Page<ReservaTipoDTO> getTiposByReserva(Long id) {
+        log.debug("Request to get all ReservaTipos");
+        List<ReservaTipo> result = reservaTipoRepository.findByReservaId(id);
+        return new PageImpl<>(result).map(reservaTipo -> reservaTipoMapper.reservaTipoToReservaTipoDTO(reservaTipo));
+    }
     /**
      *  Delete the  reservaTipo by id.
      *

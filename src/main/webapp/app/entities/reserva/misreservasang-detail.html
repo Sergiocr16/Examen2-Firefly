@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span data-translate="coffeeShopApp.reserva.detail.title">Reserva</span> {{vm.reserva.id}}</h2>
+    <h2><span data-translate="coffeeShopApp.reserva.detail.title2">Reserva</span> {{vm.reserva.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
@@ -17,7 +17,33 @@
             {{vm.reserva.usuarioLogin}}
         </dd>
     </dl>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <td>Tipo</td>
+            <td>Cantidad</td>
 
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="tipo in vm.tipos track by $index">
+            <td>
+                <span>{{tipo.tipoNombre}}</span>
+            </td>
+            <td>
+                <span>{{tipo.cantidad}}</span>
+            </td>
+            <!--<td>-->
+                <!--<span>{{vm.getPrecioTipo(tipo)}}</span>-->
+            <!--</td>-->
+
+
+        </tr>
+
+        </tbody>
+    </table>
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
@@ -28,4 +54,5 @@
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
     </button>
+
 </div>

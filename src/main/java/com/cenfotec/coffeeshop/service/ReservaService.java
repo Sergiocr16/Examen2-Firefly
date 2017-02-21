@@ -1,7 +1,9 @@
 package com.cenfotec.coffeeshop.service;
 
 import com.cenfotec.coffeeshop.domain.Reserva;
+import com.cenfotec.coffeeshop.domain.ReservaTipo;
 import com.cenfotec.coffeeshop.repository.ReservaRepository;
+import com.cenfotec.coffeeshop.repository.ReservaTipoRepository;
 import com.cenfotec.coffeeshop.service.dto.ReservaDTO;
 import com.cenfotec.coffeeshop.service.mapper.ReservaMapper;
 import org.slf4j.Logger;
@@ -16,9 +18,7 @@ import javax.inject.Inject;
 import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -32,6 +32,8 @@ public class ReservaService {
 
     @Inject
     private ReservaRepository reservaRepository;
+    @Inject
+    private ReservaTipoRepository reservaTipoRepository;
 
     @Inject
     private ReservaMapper reservaMapper;
@@ -46,8 +48,22 @@ public class ReservaService {
         log.debug("Request to save Reserva : {}", reservaDTO);
         Reserva reserva = reservaMapper.reservaDTOToReserva(reservaDTO);
         reserva.setProcesado(false);
-        reserva = reservaRepository.save(reserva);
+        reservaRepository.save(reserva);
         ReservaDTO result = reservaMapper.reservaToReservaDTO(reserva);
+        List<ReservaTipo> reservasTipo = reservaTipoRepository.findByReservaId(result.getId());
+        if (reserva.isRecursivo()){
+            List<Reserva> reservas = getFutureDates(reserva);
+            for ( int i = 1; i < reservas.size(); i ++ ) {
+               Reserva reservaNueva = reservaRepository.save(reservas.get(i));
+                for ( int e = 0; e < reservasTipo.size(); e ++ ) {
+                    ReservaTipo reservaTipo = new ReservaTipo();
+                    reservaTipo.setCantidad(reservasTipo.get(e).getCantidad());
+                    reservaTipo.setReserva(reservaNueva);
+                    reservaTipo.setTipo(reservasTipo.get(e).getTipo());
+                    reservaTipoRepository.save(reservaTipo);
+                }
+            }
+        }
         return result;
     }
     @Transactional(readOnly = true)
@@ -55,9 +71,9 @@ public class ReservaService {
         List<Reserva> solicitudesManana = new ArrayList<Reserva>();
 
         Page<Reserva> result = reservaRepository.findAll(pageable);
-        List<Reserva> solicitudes = getFutureDates(result);
-        for (int i = 0; i < solicitudes.size(); i++) {
-            Reserva reserva = solicitudes.get(i);
+        List<Reserva> solicitudes = new ArrayList<Reserva>();
+        for (int i = 0; i < result.getContent().size(); i++) {
+            Reserva reserva = result.getContent().get(i);
             if (reserva.getFechaEntrega().getDayOfYear() == (ZonedDateTime.now().plusDays(1).getDayOfYear())) {
             solicitudesManana.add(reserva);
             }
@@ -76,7 +92,6 @@ public class ReservaService {
             if (reserva.isProcesado()==false) {
                 reservas.add(reserva);
             }
-
         }
         return new PageImpl<>(reservas).map(futurareserva -> reservaMapper.reservaToReservaDTO(futurareserva));
 
@@ -97,14 +112,19 @@ public class ReservaService {
     @Transactional(readOnly = true)
     public Page<ReservaDTO> AllRequests(Pageable pageable) {
         Page<Reserva> result = reservaRepository.findAll(pageable);
-        List<Reserva> solicitudes = getFutureDates(result);
+        List<Reserva> solicitudes = new ArrayList<Reserva>();
+        for ( int i = 0; i < result.getContent().size(); i ++ ) {
+            if (result.getContent().get(i).getFechaEntrega().isAfter(ZonedDateTime.now())&& result.getContent().get(i).isProcesado()==false){
+
+                solicitudes.add(result.getContent().get(i));
+            }
+
+        }
         return new PageImpl<>(solicitudes).map(reserva -> reservaMapper.reservaToReservaDTO(reserva));
     }
 
-        protected List<Reserva>  getFutureDates(Page<Reserva> reservas){
+        protected List<Reserva>  getFutureDates(Reserva reserva){
             List<Reserva> solicitudes = new ArrayList<Reserva>();
-              for ( int i = 0; i < reservas.getContent().size(); i ++ ) {
-                Reserva reserva = reservas.getContent().get(i);
                 if(reserva.isRecursivo()){
                     int difDias = 0;
                     ZonedDateTime fechaFutura = ZonedDateTime.now();
@@ -123,10 +143,14 @@ public class ReservaService {
                         Reserva reservaNueva = new Reserva();
                         reservaNueva.setFechaEntrega(fechaFutura.plusWeeks(j));
                         reservaNueva.setUsuario(reserva.getUsuario());
+                        reservaNueva.setRecursivo(false);
+                        reservaNueva.setProcesado(false);
+                        Random numRandon = new Random();
+//                        reservaNueva.setId(Long.valueOf(numRandon.nextInt(500)));
                         solicitudes.add(reservaNueva);
                     }
                 }
-            }
+
             return solicitudes;
         }
 
@@ -143,28 +167,6 @@ public class ReservaService {
         Page<Reserva> result = reservaRepository.findAll(pageable);
         return result.map(reserva -> reservaMapper.reservaToReservaDTO(reserva));
     }
-
-    //                    ZonedDateTime fechaActual = ZonedDateTime.now();
-//                      int miDia = reserva.getFechaEntrega().getDayOfWeek().getValue();
-//               ZonedDateTime fechaFutura = ZonedDateTime.now().plusWeeks(1);
-//                    for(int k = 0; k<5;k++){
-//                      int diaSemanaFutura = reserva.getFechaEntrega().getDayOfWeek().getValue();
-//
-//                        while(diaSemanaFutura > 0){
-//                            fechaFutura = fechaFutura.minusDays(1);
-//                            diaSemanaFutura--;
-//                        }
-//                      int diaFechaFutura = fechaFutura.getDayOfWeek().getValue();
-//                        for(int j = 0; j<7;j++){
-//                            if(diaFechaFutura== miDia){
-//                                Reserva reservaNueva = new Reserva();
-//                                reservaNueva.setFechaEntrega(fechaFutura);
-//                                reservaNueva.setUsuario(reserva.getUsuario());
-//                                solicitudes.add(reservaNueva);
-//                            }
-//                            fechaFutura.plusDays(i);
-//                        }
-//                    }
 
     /**
      *  Get one reserva by id.

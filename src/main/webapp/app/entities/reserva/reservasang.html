@@ -16,7 +16,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="reserva in vm.reservas track by $index ">
+                <tr ng-repeat="reserva in vm.reservas track by $index">
 
                     <td>{{reserva.fechaEntrega | date:'medium'}}</td>
                     <td>
@@ -25,7 +25,7 @@
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="reservaang-detail({id:reserva.id})"
+                                    ui-sref="misreservasang-detail({id:reserva.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
@@ -68,8 +68,10 @@
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
+
                             <button type="submit"
-                                    ui-sref="reservaang-detail({id:requestForTomorrow.id})"
+                                    ui-sref="misreservasang-detail({id:requestForTomorrow.id})"
+
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
