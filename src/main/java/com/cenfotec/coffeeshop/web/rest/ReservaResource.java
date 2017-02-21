@@ -107,7 +107,15 @@ public class ReservaResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservasbyuser");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
+    @GetMapping("/requests")
+    @Timed
+    public ResponseEntity<List<ReservaDTO>> allRequests(@ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Reservas");
+        Page<ReservaDTO> page = reservaService.AllRequests(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/allRequests");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * GET  /reservas : get all the reservas.

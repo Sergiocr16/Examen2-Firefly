@@ -101,7 +101,7 @@ Main page styles
     display: inline-block;
     width: 347px;
     height: 497px;
-    background: url("../images/hipster.png") no-repeat center top;
+    background: url("https://userscontent2.emaze.com/images/d0e4d34e-0b77-4f13-94a7-cdb9f6eb2c9f/82546269c9f69858cf930681fb2adeff.jpg") no-repeat center top;
     background-size: contain;
 }
 
@@ -219,7 +219,13 @@ Custom alerts for notification
     padding: 0;
     margin: 0;
 }
+.navbar-background{
+    background-color: #EFEBE9!important;
 
+}
+.container-color{
+  color: #757575!important;
+}
 .alert .popover pre {
     font-size: 10px;
 }

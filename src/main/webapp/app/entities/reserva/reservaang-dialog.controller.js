@@ -5,9 +5,9 @@
         .module('coffeeShopApp')
         .controller('ReservaAngDialogController', ReservaAngDialogController);
 
-    ReservaAngDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Reserva', 'User', 'ReservaTipo','Tipo','Principal'];
+    ReservaAngDialogController.$inject = ['$state','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Reserva', 'User', 'ReservaTipo','Tipo','Principal'];
 
-    function ReservaAngDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Reserva, User, ReservaTipo,Tipo,Principal) {
+    function ReservaAngDialogController ($state, $timeout, $scope, $stateParams, $uibModalInstance, entity, Reserva, User, ReservaTipo,Tipo,Principal) {
         var vm = this;
 
         vm.reserva = entity;
@@ -41,12 +41,14 @@
         }
 
           vm.getPrecioTotal = function(){
-//                    var precioTotal = 0;
-//                    var precioPorTipo = vm.reservatipos.map((reservaTipo)function(){return vm.getPrecioTipo(reservaTipo);})
-//                     angular.forEach(precioPorTipo, function(value, key) {
-//                             precioTotal = precioTotal + value;
-//                       });
-//                       return precioTotal;
+                       var precioTotal = 0;
+                       var precioPorTipo = 0
+                       angular.forEach(vm.reservatipos, function(value, key) {
+                       precioPorTipo = precioPorTipo + vm.getPrecioTipo(value);
+
+                       });
+                        return precioPorTipo;
+
                 }
 
         $timeout(function (){
@@ -54,11 +56,14 @@
         });
 
         function clear () {
+
             $uibModalInstance.dismiss('cancel');
+     $state.go('misReservasang');
         }
 
         function save () {
             vm.isSaving = true;
+            vm.reserva.reservatipos = vm.reservatipos;
             if (vm.reserva.id !== null) {
                 Reserva.update(vm.reserva, onSaveSuccess, onSaveError);
             } else {
@@ -75,11 +80,11 @@
             $scope.$emit('coffeeShopApp:reservaUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
+
             angular.forEach(vm.reservatipos, function(value, key) {
               value.reservaId = result.id;
               if(value.tipoId!=null){
                   ReservaTipo.save(value);
-
               }
             });
         }

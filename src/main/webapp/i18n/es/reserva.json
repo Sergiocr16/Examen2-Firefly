@@ -17,7 +17,8 @@
                 "question": "¿Seguro que quiere eliminar Reserva {{ id }}?"
             },
             "detail": {
-                "title": "Solicitud"
+                "title": "Solicitud",
+                "title2": "Reserva"
             },
             "fechaEntrega": "Fecha Entrega",
             "recursivo": "Recursivo",

@@ -1,5 +1,8 @@
 package com.cenfotec.coffeeshop.service.dto;
 
+import com.cenfotec.coffeeshop.domain.Reserva;
+import com.cenfotec.coffeeshop.domain.ReservaTipo;
+
 import java.time.ZonedDateTime;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -26,6 +29,7 @@ public class ReservaDTO implements Serializable {
 
     private Long usuarioId;
 
+    public Set<ReservaTipoDTO> reservasTipos;
 
     private String usuarioLogin;
 
@@ -52,6 +56,14 @@ public class ReservaDTO implements Serializable {
         this.recursivo = recursivo;
     }
 
+    public  Set<ReservaTipoDTO> getReservasTipos() {
+        return reservasTipos;
+    }
+
+    public void setReservasTipos( Set<ReservaTipoDTO>  reservasTipos) {
+        this.reservasTipos = reservasTipos;
+    }
+
     public Boolean getProcesado() {
         return recursivo;
     }
@@ -67,7 +79,6 @@ public class ReservaDTO implements Serializable {
     public void setUsuarioId(Long userId) {
         this.usuarioId = userId;
     }
-
 
     public String getUsuarioLogin() {
         return usuarioLogin;

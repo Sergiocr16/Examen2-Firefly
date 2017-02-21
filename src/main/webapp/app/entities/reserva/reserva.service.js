@@ -36,7 +36,17 @@
                     method:'GET',
                     url: 'api/requestsForTomorrow',
                     isArray: true
-                }
+                },
+                 'requests': {
+                    method:'GET',
+                    url: 'api/requests',
+                    isArray: true
+                },
+                  'tiposByReserva': {
+                     method:'GET',
+                     url: 'api/tiposByReserva/:id',
+                     isArray: true
+                 }
         });
     }
 })();
