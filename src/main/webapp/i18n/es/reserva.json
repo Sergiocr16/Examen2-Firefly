@@ -23,7 +23,8 @@
             "fechaEntrega": "Fecha Entrega",
             "recursivo": "Recursivo",
             "usuario": "Usuario",
-            "reservasTipos": "Reservas Tipos"
+            "reservasTipos": "Reservas Tipos",
+            "confirm": "Procesar"
         }
     }
 }
