@@ -1,0 +1,58 @@
+
+<div>
+    <h2><span data-translate="coffeeShopApp.reserva.detail.title2">Reserva</span> {{vm.reserva.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="coffeeShopApp.reserva.fechaEntrega">Fecha Entrega</span></dt>
+        <dd>
+            <span>{{vm.reserva.fechaEntrega | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="coffeeShopApp.reserva.recursivo">Recursivo</span></dt>
+        <dd>
+            <span>{{vm.reserva.recursivo}}</span>
+        </dd>
+        <dt><span data-translate="coffeeShopApp.reserva.usuario">Usuario</span></dt>
+        <dd>
+            {{vm.reserva.usuarioLogin}}
+        </dd>
+    </dl>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <td>Tipo</td>
+            <td>Cantidad</td>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="tipo in vm.tipos track by $index">
+            <td>
+                <span>{{tipo.tipoNombre}}</span>
+            </td>
+            <td>
+                <span>{{tipo.cantidad}}</span>
+            </td>
+            <!--<td>-->
+            <!--<span>{{vm.getPrecioTipo(tipo)}}</span>-->
+            <!--</td>-->
+
+
+        </tr>
+
+        </tbody>
+    </table>
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="reservaang-detail.edit({id:vm.reserva.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+
+</div>
