@@ -32,43 +32,54 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
-                        <li ui-sref-active="active">
-                            <a  ui-sref="beneficioang" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-glass"></span>&nbsp;
+<!--<<<<<<< HEAD-->
+                        <!--<li ui-sref-active="active">-->
+                            <!--<a  ui-sref="beneficioang" ng-click="vm.collapseNavbar()">-->
+                                <!--<span class="glyphicon glyphicon-glass"></span>&nbsp;-->
+<!--=======-->
+                        <li ui-sref-active="active" has-authority="ROLE_INVENTORY">
+                            <a ui-sref="beneficioang" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+<!--&gt;>>>>>> 81eba9be4bc24b062cfec0a703f6a1ebf0c555bb-->
                                 <span data-translate="global.menu.entities.beneficioang">Beneficioang</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" has-authority="ROLE_INVENTORY">
                             <a ui-sref="entradaang" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-glass"></span>&nbsp;
                                 <span data-translate="global.menu.entities.entradaang">Entradaang</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" has-authority="ROLE_INVENTORY">
                             <a ui-sref="tipoang" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-glass"></span>&nbsp;
                                 <span data-translate="global.menu.entities.tipoang">Tipoang</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" has-authority="ROLE_ADMIN">
                             <a ui-sref="reservaang" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-glass"></span>&nbsp;
                                 <span data-translate="global.menu.entities.reservaang">Reservaang</span>
                             </a>
                         </li>
+                        <!--<<<<<<< HEAD-->
+                        <!--&lt;!&ndash;<li ui-sref-active="active">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a ui-sref="reserva-tipoang" ng-click="vm.collapseNavbar()">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="glyphicon glyphicon-asterisk"></span>&nbsp;&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span data-translate="global.menu.entities.reservaTipoang">Reserva Tipoang</span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
                         <!--<li ui-sref-active="active">-->
-                            <!--<a ui-sref="reserva-tipoang" ng-click="vm.collapseNavbar()">-->
-                                <!--<span class="glyphicon glyphicon-asterisk"></span>&nbsp;-->
-                                <!--<span data-translate="global.menu.entities.reservaTipoang">Reserva Tipoang</span>-->
-                            <!--</a>-->
-                        <!--</li>-->
-                        <li ui-sref-active="active">
+                            <!--=======-->
+
+                        <li ui-sref-active="active" has-authority="ROLE_USER">
+<!--&gt;>>>>>> 81eba9be4bc24b062cfec0a703f6a1ebf0c555bb-->
                             <a ui-sref="misReservasang" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-glass"></span>&nbsp;
                                 <span data-translate="global.menu.entities.misReservasang">Mis Reservasang</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" has-authority="ROLE_USER">
                             <a ui-sref="misentregasang" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-glass"></span>&nbsp;
                                 <span data-translate="global.menu.entities.misentregasang">Mis Reservasang</span>

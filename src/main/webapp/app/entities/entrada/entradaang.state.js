@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/entradaang?page&sort&search',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_INVENTORY'],
                 pageTitle: 'coffeeShopApp.entrada.home.title'
             },
             views: {
@@ -55,7 +55,7 @@
             parent: 'entity',
             url: '/entradaang/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_INVENTORY'],
                 pageTitle: 'coffeeShopApp.entrada.detail.title'
             },
             views: {
@@ -87,7 +87,7 @@
             parent: 'entradaang-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_INVENTORY']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -112,7 +112,7 @@
             parent: 'entradaang',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_INVENTORY']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -141,7 +141,7 @@
             parent: 'entradaang',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_INVENTORY']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -166,7 +166,7 @@
             parent: 'entradaang',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_INVENTORY']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
