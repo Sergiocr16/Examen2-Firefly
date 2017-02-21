@@ -17,7 +17,8 @@
                 "question": "Are you sure you want to delete Reserva {{ id }}?"
             },
             "detail": {
-                "title": "Request"
+                "title": "Request",
+                "title2": "Reservation"
             },
             "fechaEntrega": "Fecha Entrega",
             "recursivo": "Recursivo",
