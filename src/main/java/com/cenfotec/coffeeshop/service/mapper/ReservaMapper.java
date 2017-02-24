@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Mapper for the entity Reserva and its DTO ReservaDTO.
  */
-@Mapper(componentModel = "spring", uses = {UserMapper.class, })
+@Mapper(componentModel = "spring", uses = {UserMapper.class, ReservaTipoMapper.class})
 public interface ReservaMapper {
 
     @Mapping(source = "usuario.id", target = "usuarioId")

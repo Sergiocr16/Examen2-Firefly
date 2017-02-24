@@ -5,6 +5,7 @@ import com.cenfotec.coffeeshop.service.dto.ReservaTipoDTO;
 
 import org.mapstruct.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Mapper for the entity ReservaTipo and its DTO ReservaTipoDTO.
@@ -18,6 +19,7 @@ public interface ReservaTipoMapper {
     ReservaTipoDTO reservaTipoToReservaTipoDTO(ReservaTipo reservaTipo);
 
     List<ReservaTipoDTO> reservaTiposToReservaTipoDTOs(List<ReservaTipo> reservaTipos);
+    Set<ReservaTipoDTO> reservaTiposToReservaTipoDTOs(Set<ReservaTipo> reservaTipos);
 
     @Mapping(source = "tipoId", target = "tipo")
     @Mapping(source = "reservaId", target = "reserva")
@@ -25,6 +27,7 @@ public interface ReservaTipoMapper {
 
     List<ReservaTipo> reservaTipoDTOsToReservaTipos(List<ReservaTipoDTO> reservaTipoDTOs);
 
+    Set<ReservaTipo> reservaTipoDTOsToReservaTipos(Set<ReservaTipoDTO> reservaTipoDTOs);
     default Tipo tipoFromId(Long id) {
         if (id == null) {
             return null;
