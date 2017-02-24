@@ -171,7 +171,7 @@
                     parent: 'entity',
                     url: '/misreservasang/{id}',
                     data: {
-                        authorities: ['ROLE_USER'],
+                        authorities: ['ROLE_USER','ROLE_ADMIN'],
                         pageTitle: 'coffeeShopApp.reserva.detail.title'
                     },
                     views: {
